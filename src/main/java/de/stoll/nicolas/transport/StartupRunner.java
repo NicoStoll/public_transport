@@ -1,6 +1,6 @@
 package de.stoll.nicolas.transport;
 
-import de.stoll.nicolas.transport.importer.StopImportService;
+import de.stoll.nicolas.transport.importer.stops.StopImportService;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;

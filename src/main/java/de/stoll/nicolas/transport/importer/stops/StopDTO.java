@@ -1,11 +1,11 @@
-package de.stoll.nicolas.transport.importer;
+package de.stoll.nicolas.transport.importer.stops;
 
 import lombok.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
+@Data
 public class StopDTO {
 
     @JsonProperty("stop_id")
