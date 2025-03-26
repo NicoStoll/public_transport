@@ -19,46 +19,19 @@ import java.util.List;
 @Slf4j
 public class CSVImporterService {
 
-    private final StopRepository stopRepository;
-
-    public CSVImporterService(StopRepository stopRepository) {
-        this.stopRepository = stopRepository;
-    }
-
-    @Transactional
-    public void loadStopsFromCSV() {
-
-        List<StopDTO> stops = this.loadObjectList(StopDTO.class, "stops.csv");
-
-        stops.forEach(stopDto -> {
-
-            Stop stop = new Stop(
-                    stopDto.getStopId(),
-                    stopDto.getStopName(),
-                    stopDto.getStopLat(),
-                    stopDto.getStopLon(),
-                    Integer.parseInt(stopDto.getLocationType()));
-
-            if (stopDto.getParentStation() != null && !stopDto.getParentStation().isEmpty()) {
-                stopRepository.findById(stopDto.getParentStation()).ifPresent(stop::setParentStop);
-            }
-            stopRepository.save(stop);
-        });
-
-
-        log.info("Stops imported successfully into Neo4j!");
-    }
-
     public <T> List<T> loadObjectList(Class<T> type, String fileName) {
         try {
             CsvSchema bootstrapSchema = CsvSchema.emptySchema().withHeader();
             CsvMapper mapper = new CsvMapper();
             File file = new ClassPathResource(fileName).getFile();
-            MappingIterator<T> readValues =
-                    mapper.readerFor(type).with(bootstrapSchema).readValues(file);
-            return readValues.readAll();
+            try(MappingIterator<T> readValues = mapper.readerFor(type).with(bootstrapSchema).readValues(file)) {
+                return readValues.readAll();
+            } catch (IOException e) {
+                log.error("Error occurred while loading object list from file {}", fileName, e);
+                return Collections.emptyList();
+            }
         } catch (Exception e) {
-            log.error("Error occurred while loading object list from file {}", fileName, e);
+            log.error("Exception occurred while loading object list from file {}", fileName, e);
             return Collections.emptyList();
         }
     }
