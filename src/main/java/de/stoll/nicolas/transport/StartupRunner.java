@@ -1,5 +1,7 @@
 package de.stoll.nicolas.transport;
 
+import de.stoll.nicolas.transport.importer.agency.AgencyImportService;
+import de.stoll.nicolas.transport.importer.routes.RouteImportService;
 import de.stoll.nicolas.transport.importer.stops.StopImportService;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
@@ -12,8 +14,14 @@ public class StartupRunner implements ApplicationRunner {
 
     private final StopImportService stopImportService;
 
+    private final AgencyImportService agencyImportService;
+
+    private final RouteImportService routeImportService;
+
     @Override
     public void run(ApplicationArguments args) {
+        agencyImportService.importAgencies();
+        routeImportService.importRoutes();
         stopImportService.loadStopsFromCSV();
     }
 }

@@ -1,14 +1,14 @@
 package de.stoll.nicolas.transport.data;
 
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.Setter;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
 @Node("Stop")
-@Getter
+@Data
 public class Stop {
 
     @Id

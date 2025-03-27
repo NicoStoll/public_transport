@@ -34,3 +34,5 @@ build/
 
 ### assets
 /src/main/resources/stops.csv
+/src/main/resources/agency.csv
+/src/main/resources/routes.csv
