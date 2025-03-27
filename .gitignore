@@ -36,3 +36,6 @@ build/
 /src/main/resources/stops.csv
 /src/main/resources/agency.csv
 /src/main/resources/routes.csv
+/src/main/resources/trips.csv
+/src/main/resources/calendar.csv
+/src/main/resources/calendar_dates.csv
