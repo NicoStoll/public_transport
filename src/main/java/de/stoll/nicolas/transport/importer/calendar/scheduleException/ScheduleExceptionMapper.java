@@ -11,7 +11,6 @@ import java.time.format.DateTimeFormatter;
 @Mapper(componentModel = "spring", imports = {LocalDate.class})
 public interface ScheduleExceptionMapper {
 
-    @Mapping(target= "serviceId", source = "serviceId")
     @Mapping(target = "date", expression = "java(stringToLocalDate(scheduleExceptionDTO.getDate()))")
     @Mapping(target = "exceptionType", expression = "java(mapExceptionType(scheduleExceptionDTO.getExceptionType()))")
     ScheduleException toScheduleException(ScheduleExceptionDTO scheduleExceptionDTO);

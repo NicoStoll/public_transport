@@ -42,7 +42,7 @@ public class RouteImportService {
 
         routeRepository.saveAll(routeMap.values());
 
-        log.info("Routes imported successfully into Neo4j!");
+        log.info("Imported {} routes", routeMap.size());
 
     }
 }

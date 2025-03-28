@@ -5,6 +5,7 @@ import de.stoll.nicolas.transport.importer.calendar.schedule.ScheduleImportServi
 import de.stoll.nicolas.transport.importer.calendar.scheduleException.ScheduleExceptionImportService;
 import de.stoll.nicolas.transport.importer.routes.RouteImportService;
 import de.stoll.nicolas.transport.importer.stops.StopImportService;
+import de.stoll.nicolas.transport.importer.trips.TripImportService;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -24,6 +25,8 @@ public class StartupRunner implements ApplicationRunner {
 
     private final ScheduleExceptionImportService scheduleExceptionImportService;
 
+    private final TripImportService tripImportService;
+
     @Override
     public void run(ApplicationArguments args) {
         agencyImportService.importAgencies();
@@ -31,5 +34,6 @@ public class StartupRunner implements ApplicationRunner {
         stopImportService.loadStopsFromCSV();
         scheduleImportService.importSchedule();
         scheduleExceptionImportService.importScheduleExceptions();
+        tripImportService.importTrips();
     }
 }

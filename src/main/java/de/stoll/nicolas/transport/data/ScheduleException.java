@@ -20,7 +20,6 @@ public class ScheduleException {
     @GeneratedValue(UUIDStringGenerator.class)
     private String id;
 
-    private final String serviceId;
     private final LocalDate date;
     private final ExceptionType exceptionType;
 
@@ -28,8 +27,7 @@ public class ScheduleException {
     @Setter
     private Schedule schedule;
 
-    public ScheduleException(String serviceId, LocalDate date, ExceptionType exceptionType) {
-        this.serviceId = serviceId;
+    public ScheduleException(LocalDate date, ExceptionType exceptionType) {
         this.date = date;
         this.exceptionType = exceptionType;
     }

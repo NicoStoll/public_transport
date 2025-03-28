@@ -5,6 +5,7 @@ import de.stoll.nicolas.transport.data.ScheduleRepository;
 import de.stoll.nicolas.transport.importer.CSVImporterService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.Map;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class ScheduleImportService {
 
     private final CSVImporterService csvImporter;
@@ -37,5 +39,7 @@ public class ScheduleImportService {
         });
 
         scheduleRepository.saveAll(serviceMap.values());
+
+        log.info("Imported {} schedules", serviceMap.size());
     }
 }

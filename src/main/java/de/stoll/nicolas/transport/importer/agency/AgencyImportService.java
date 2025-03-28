@@ -39,6 +39,6 @@ public class AgencyImportService {
         // Save all agencies
         agencyRepository.saveAll(agencyMap.values());
 
-        log.info("Agencies imported successfully into Neo4j!");
+        log.info("Imported {} agencies", agencyMap.size());
     }
 }

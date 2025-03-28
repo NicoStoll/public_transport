@@ -54,7 +54,7 @@ public class StopImportService {
         // Save again to update relationships
         stopRepository.saveAll(stopMap.values());
 
-        log.info("Stops imported successfully into Neo4j!");
+        log.info("Imported {} stops", stopMap.size());
     }
 
 }
