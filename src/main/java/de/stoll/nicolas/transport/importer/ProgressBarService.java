@@ -24,7 +24,7 @@ public class ProgressBarService {
 
     public void complete() {
         printProgress(100);
-        log.info("\n Import completed successfully!");
+        System.out.println();
     }
 
     private void printProgress() {
