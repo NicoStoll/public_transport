@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class StopTimesDTO {
+public class StopTimeDTO {
 
     @JsonProperty("trip_id")
     private String tripId;

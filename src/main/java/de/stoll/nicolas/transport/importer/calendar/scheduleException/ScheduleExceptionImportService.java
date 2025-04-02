@@ -40,7 +40,7 @@ public class ScheduleExceptionImportService {
 
         List<ScheduleExceptionDTO> scheduleExceptions = this.importerService.loadObjectList(ScheduleExceptionDTO.class, "calendar_dates.csv");
 
-        progressBarService.startProgressBar(scheduleExceptions.size());
+        progressBarService.startProgressBar(scheduleExceptions.size(), "SCHEDULE EXCEPTIONS");
 
         int batchSize = 5000;
 

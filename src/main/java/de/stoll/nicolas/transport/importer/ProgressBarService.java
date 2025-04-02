@@ -11,9 +11,12 @@ public class ProgressBarService {
     private long totalItems;
     private long processedItems;
 
-    public void startProgressBar(long total) {
+    private String importDataType = "";
+
+    public void startProgressBar(long total, String importDataType) {
         this.totalItems = total;
         this.processedItems = 0;
+        this.importDataType = importDataType;
         printProgress();
     }
 
@@ -33,8 +36,9 @@ public class ProgressBarService {
     }
 
     private void printProgress(int percent) {
-        int filled = (percent * BAR_WIDTH) / 100;
-        String bar = "[" + "=".repeat(filled) + " ".repeat(BAR_WIDTH - filled) + "] " + percent + "%";
+
+        int filled = Math.min((percent * BAR_WIDTH) / 100, BAR_WIDTH);
+        String bar = "[" + "=".repeat(filled) + " ".repeat(BAR_WIDTH - filled) + "] " + percent + "% " + importDataType;
         System.out.print("\r" + bar);
     }
 }

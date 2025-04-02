@@ -12,6 +12,13 @@ public interface StopMapper {
     @Mapping(target = "stopName", source = "stopName")
     @Mapping(target = "stopLat", source = "stopLat")
     @Mapping(target = "stopLon", source = "stopLon")
-    @Mapping(target = "locationType", source = "locationType")
+    @Mapping(target = "locationType", expression = "java(parseInteger(stopDTO.getLocationType()))")
     Stop toStop(StopDTO stopDTO);
+
+    default Integer parseInteger(String value) {
+        if (value == null || value.trim().isEmpty()) {
+            return 0;  // Default value, or you could use `null` if needed
+        }
+        return Integer.parseInt(value);
+    }
 }

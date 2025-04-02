@@ -19,7 +19,7 @@ public class Trip {
 
     private String tripShortName;
 
-    private int directionId;
+    private Direction directionId;
 
     private int blockId;
 
@@ -33,10 +33,10 @@ public class Trip {
     @Relationship(type = "HAS_SCHEDULE", direction = Relationship.Direction.OUTGOING)
     private Schedule schedule;
 
-    public Trip(String tripHeadSign, String tripShortName, int directionId, int blockId, int shapeId) {
+    public Trip(String tripHeadSign, String tripShortName, Direction direction, int blockId, int shapeId) {
         this.tripHeadSign = tripHeadSign;
         this.tripShortName = tripShortName;
-        this.directionId = directionId;
+        this.directionId = direction;
         this.blockId = blockId;
         this.shapeId = shapeId;
     }
